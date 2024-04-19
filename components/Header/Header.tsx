@@ -3,9 +3,23 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div>
-     Header
-    </div>
+    <header>
+      <nav>
+        <div className="navbar justify-between bg-base-300">
+          <Link href="/" className="btn btn-ghost text-lg">
+            DecoPalets
+          </Link>
+          <ul>
+            <li>
+              <Link className="btn btn-ghost rounded-btn" href="/cart">Cart</Link>
+            </li>
+            <li>
+              <Link className="btn btn-ghost rounded-btn" href="/signin">Sign In</Link>
+            </li>
+          </ul>      
+        </div>
+      </nav>
+    </header>
   );
 };
 
