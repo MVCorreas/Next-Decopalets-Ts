@@ -1,6 +1,6 @@
 export type Product = {
+    id: string;
     _id?: string;
-    id?: number;
     name: string;
     slug?: string;
     image: string;
@@ -9,6 +9,6 @@ export type Product = {
     description: string;
     category: string;
     rating: number;
-    numReviews?: number;
+    numReviews: number;
     countInStock: number;
 };
