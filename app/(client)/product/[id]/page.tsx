@@ -2,17 +2,37 @@ import Link from "next/link";
 import data from '@/lib/data';
 import Image from "next/image";
 import AddToCart from "@/components/Product/AddToCart";
-export default function ProductDetails({params}: {params: {id: string}}) {
+import productService from "@/lib/services/productService";
+import { convertDocToObj } from "@/lib/utils";
 
-    // console.log('Params:', params);
-    // console.log('Params ID:', params.id);
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string }
+}) {
+  const product = await productService.getById(params.id)
+  //console.log('At product id, params.id:', params.id);
 
-    const product = data.products.find((product) => product.id === params.id);
-   //console.log('At ProductDetails product:', product);
+  if (!product) {
+    return { title: 'Product not found' }
+  }
+  return {
+    title: product.name,
+    description: product.description,
+  }
+}
 
-    if (!product) {
-      return <div>Product not found</div>;
-    }
+
+export default async function ProductDetails({ params }: { params: { id: string } }) {
+  // console.log('Params:', params);
+  // console.log('Params ID:', params.id);
+
+  const product = await productService.getById(params.id)
+  //console.log('At ProductDetails product:', product);
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
     
     //console.log('Item:', {...product, qty: 0, color: '', size: ''});
 
@@ -29,6 +49,7 @@ export default function ProductDetails({params}: {params: {id: string}}) {
           width={640}
           height={640}
           sizes='100vh'
+          priority
           style={{
             width: '100%',
             height: 'auto',
@@ -71,7 +92,7 @@ export default function ProductDetails({params}: {params: {id: string}}) {
               {product.countInStock !== 0 && (
                   <div className='card-actions justify-center'>
                     <AddToCart
-                    item={{...product, id: String(product.id), qty: 0, color: '', size: ''}}
+                    item={{...convertDocToObj(product), id: String(product.id), qty: 0, color: '', size: ''}}
                     />
                   </div>
                 )}

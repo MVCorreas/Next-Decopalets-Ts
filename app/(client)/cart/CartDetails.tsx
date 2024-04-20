@@ -37,10 +37,10 @@ export default function CartDetails() {
               </thead>
               <tbody>
                 {items.map((item, index) => (
-                  <tr key={`${item.id}-${index}`}>
+                  <tr key={`${item._id}-${index}`}>
                     <td>
                       <Link
-                        href={`/product/${item.id}`}
+                        href={`/product/${item._id}`}
                         className="flex items-center"
                       >
                         <Image
