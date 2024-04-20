@@ -1,11 +1,11 @@
 import Link from "next/link";
 import data from '@/lib/data';
 import Image from "next/image";
+import AddToCart from "@/components/Product/AddToCart";
 export default function ProductDetails({params}: {params: {id: string}}) {
 
     // console.log('Params:', params);
     // console.log('Params ID:', params.id);
-
 
     const product = data.products.find((product) => product.id === params.id);
    //console.log('At ProductDetails product:', product);
@@ -13,6 +13,8 @@ export default function ProductDetails({params}: {params: {id: string}}) {
     if (!product) {
       return <div>Product not found</div>;
     }
+    
+    //console.log('Item:', {...product, qty: 0, color: '', size: ''});
 
   return (
     <>
@@ -66,11 +68,13 @@ export default function ProductDetails({params}: {params: {id: string}}) {
                 </div>
               </div>
            
-                <div className='card-actions justify-center'>
-                 <button className="btn btn-primary w-full" type="button">
-                  Add to cart
-                  </button>
-                </div>
+              {product.countInStock !== 0 && (
+                  <div className='card-actions justify-center'>
+                    <AddToCart
+                    item={{...product, id: String(product.id), qty: 0, color: '', size: ''}}
+                    />
+                  </div>
+                )}
   
             </div>
         </div>
