@@ -62,11 +62,11 @@ const RegisterForm = () => {
         throw new Error(data.message)
       }
     } catch (err: any) {
-    //   const error =
-    //     err.message && err.message.indexOf('E11000') === 0
-    //       ? 'Email is duplicate'
-    //       : err.message
-      toast.error(err || 'error')
+      const error =
+        err.message && err.message.indexOf('E11000') === 0
+          ? 'Email is duplicate'
+          : err.message
+      toast.error(error || 'error')
     }
   }
   return (
