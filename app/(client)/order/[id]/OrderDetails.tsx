@@ -16,6 +16,32 @@ export default function OrderDetails({
   paypalClientId: string
 }) {
   const { data: session } = useSession()
+
+  function createPayPalOrder() {
+    return fetch(`/api/orders/${orderId}/create-paypal-order`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((order) => order.id)
+  }
+
+  function onApprovePayPalOrder(data: any) {
+    return fetch(`/api/orders/${orderId}/capture-paypal-order`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((orderData) => {
+        toast.success('Order paid successfully')
+      })
+  }
+
   const { data, error } = useSWR(`/api/orders/${orderId}`)
 
   if (error) return error.message
@@ -35,7 +61,7 @@ export default function OrderDetails({
     paidAt,
   } = data
 
-  console.log('Order ID:', orderId);
+  console.log('At OrderDetails: Order ID:', orderId);
 
   return (
     <div>
@@ -139,6 +165,20 @@ export default function OrderDetails({
                     <div>${totalPrice}</div>
                   </div>
                 </li>
+
+                {!isPaid && paymentMethod === 'PayPal' && (
+                  <li>
+                    <PayPalScriptProvider
+                      options={{ clientId: paypalClientId }}
+                    >
+                      <PayPalButtons
+                        createOrder={createPayPalOrder}
+                        onApprove={onApprovePayPalOrder}
+                      />
+                    </PayPalScriptProvider>
+                  </li>
+                )}
+                
               </ul>
             </div>
           </div>
