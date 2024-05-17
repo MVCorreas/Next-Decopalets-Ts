@@ -60,6 +60,9 @@ const Menu = () => {
                     <li >
                       <Link href="/order-history">Order history </Link>
                     </li>
+                    <li >
+                      <Link href="/profile">Profile</Link>
+                    </li>
                      <li >
                       <button type="button" onClick={signOutHandler}>
                         Sign out
