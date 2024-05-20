@@ -1,4 +1,4 @@
-
+import "../globals.css";
 
 export default function FrontLayout({ children,}: { children: React.ReactNode }) {
   return (

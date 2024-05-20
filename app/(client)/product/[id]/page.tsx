@@ -43,20 +43,16 @@ export default async function ProductDetails({ params }: { params: { id: string 
     </div>
     <div className='grid md:grid-cols-4 md:gap-3'>
       <div className='md:col-span-2'>
-        <Image 
-          src={product.image}
-          alt={product.name}
-          width={640}
-          height={640}
-          sizes='100vh'
-          priority
-          style={{
-            width: '100%',
-            height: 'auto',
-            borderRadius: '10px',
-          }}
-        //   priority
-        />            
+      <div style={{ width: '500px', height: '500px', position: 'relative' }}>
+      <Image
+      src={product.image}
+      alt={product.name}
+      width={500} 
+      height={500} 
+      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' }} 
+      priority
+    />
+          </div>
       </div>
       <div>
         <ul className='space-y-4'>
