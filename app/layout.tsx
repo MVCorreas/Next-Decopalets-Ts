@@ -19,7 +19,7 @@ export default function RootLayout({ children,}: { children: React.ReactNode }) 
       <div className="min-h-screen flex flex-col">
           <Header />
           {children}
-          <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+          <footer className="footer footer-center p-4 bg-sky-50 text-base-content">
             <p>Copyright © 2024 - All right reserved by DecoPalets</p>
           </footer>
         </div>
