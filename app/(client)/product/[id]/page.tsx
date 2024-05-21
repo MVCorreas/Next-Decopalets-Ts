@@ -43,13 +43,13 @@ export default async function ProductDetails({ params }: { params: { id: string 
     </div>
     <div className='grid md:grid-cols-4 md:gap-3'>
       <div className='md:col-span-2'>
-      <div style={{ width: '500px', height: '500px', position: 'relative' }}>
+      <div style={{ width: '400px', height: '500px', position: 'relative',  backgroundColor: '#f0f9ff', borderRadius: '10px' }}>
       <Image
       src={product.image}
       alt={product.name}
       width={500} 
       height={500} 
-      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' }} 
+      style={{ width: '100%', height: '100%', objectFit: 'none', borderRadius: '10px' }} 
       priority
     />
           </div>

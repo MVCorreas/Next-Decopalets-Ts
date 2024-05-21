@@ -7,7 +7,8 @@ const Header = () => {
   return (
     <header>
       <nav>
-        <div className="navbar justify-between bg-sky-100">
+        <div className="navbar justify-between bg-sky-50">
+          <Link href='/'>
           <Image
             src="/assets/HomeDecoLogo.jpeg"  
             alt="DecoPalets Logo"
@@ -15,6 +16,8 @@ const Header = () => {
             height={50}
             style={{ objectFit: "contain", borderRadius: "50%" }}
           />
+          </Link>
+          
           <Link href="/" className="btn btn-ghost text-lg">
             DecoPalets
           </Link>

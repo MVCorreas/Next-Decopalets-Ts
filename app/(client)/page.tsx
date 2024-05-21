@@ -32,7 +32,7 @@ export default async function Home() {
             <div 
               key={product._id}
               id={`slide-${index}`}
-              className="carousel-item relative flex-shrink-0 w-full flex-1"
+              className="carousel-item relative w-full flex-1"
              
             >
               <Link href={`/product/${product._id}`}>
