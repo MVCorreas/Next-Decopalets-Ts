@@ -18,18 +18,18 @@ export default function CartDetails() {
 
   return (
     <>
-      <h1 className="py-4 text-2xl">Shopping Cart</h1>
+      <h1 className="py-4 my-2 text-white text-3xl">Shopping Cart</h1>
 
       {items.length === 0 ? (
         <div>
           Cart is empty. <Link href="/">Go shopping</Link>
         </div>
       ) : (
-        <div className="grid md:grid-cols-4 md:gap-5">
+        <div className="grid md:grid-cols-4 md:gap-5 bg-sky-50 rounded-lg shadow-md p-9">
           <div className="overflow-x-auto md:col-span-3">
             <table className="table">
-              <thead>
-                <tr>
+              <thead key={items[0]._id}>
+                <tr className="text-lg text-[#244999]">
                   <th>Item</th>
                   <th>Quantity</th>
                   <th>Price</th>
@@ -50,39 +50,40 @@ export default function CartDetails() {
                           height={50}
                           priority
                           style={{
-                            objectFit: "cover", // or 'contain' based on your preference
-                            width: "50px",
-                            height: "50px",
+                            objectFit: "cover", 
+                            width: "100px",
+                            height: "100px",
+                            borderRadius: "10px"
                           }}
                         />
-                        <span className="px-2">{item.name}</span>
+                        <span className="px-2 text-xl">{item.name}</span>
                       </Link>
                     </td>
                     <td>
                       <button
-                        className="btn"
+                        className="btn bg-[#8EA4D2] hover:bg-[#2B5F9E] text-white"
                         type="button"
                         onClick={() => decrease(item)}
                       >
                         -
                       </button>
-                      <span className="px-2">{item.qty}</span>
+                      <span className="px-2 text-lg">{item.qty}</span>
                       <button
-                        className="btn"
+                        className="btn bg-[#8EA4D2] hover:bg-[#2B5F9E] text-white"
                         type="button"
                         onClick={() => increase(item)}
                       >
                         +
                       </button>
                     </td>
-                    <td>${item.price}</td>
+                    <td className="text-lg">${item.price}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <div>
-            <div className="card bg-base-300">
+            <div className="card bg-[#8EA4D2] shadow-xl mt-3 md:mt-0">
               <div className="card-body">
                 <ul>
                   <li>
@@ -94,7 +95,7 @@ export default function CartDetails() {
                   <li>
                     <button
                       onClick={() => router.push("/shipping")}
-                      className="btn btn-primary w-full"
+                      className="btn btn-primary w-full bg-[#244999] hover:bg-[#2B5F9E] text-white text-lg"
                     >
                       Proceed to Checkout
                     </button>
