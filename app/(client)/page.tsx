@@ -59,7 +59,7 @@ export default async function Home() {
         </div>
      
     </div>
-    <h2 className="text-3xl text-bold text-white py-2 mt-4">Latest products</h2>
+    <h1 className="text-4xl text-bold text-white py-2 mt-8 bg-opacity-50">Latest products</h1>
     <div className="grid grid-cols-1 pag-4 gap-8 md:grid-cols-3 lg:grid-cols-4">
       {
         latestProducts.map((product) => (

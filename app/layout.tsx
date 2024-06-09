@@ -20,7 +20,7 @@ export default function RootLayout({ children,}: { children: React.ReactNode }) 
           <Header />
           {children}
           <footer className="footer footer-center p-4 bg-sky-50 text-base-content">
-            <p>Copyright © 2024 - All right reserved by DecoPalets</p>
+            <p>Copyright © 2024 - All right reserved by DecoPallets</p>
           </footer>
         </div>
       </Providers>

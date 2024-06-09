@@ -18,8 +18,8 @@ const Header = () => {
           />
           </Link>
           
-          <Link href="/" className="btn btn-ghost text-lg">
-            DecoPalets
+          <Link href="/" className="btn btn-ghost text-3xl text-sky-800">
+            DecoPallets
           </Link>
           <Menu />
         </div>
