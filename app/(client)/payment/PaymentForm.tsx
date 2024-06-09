@@ -24,9 +24,9 @@ const Form = () => {
   return (
     <div>
       <CheckoutSteps current={2} />
-      <div className="max-w-sm mx-auto card bg-base-300 my-4">
+      <div className="max-w-sm mx-auto card bg-[#8EA4D2] my-4">
         <div className="card-body">
-          <h1 className="card-title">Payment Method</h1>
+          <h1 className="card-title text-white">Payment Method</h1>
           <form onSubmit={handleSubmit}>
             {['PayPal', 'Stripe', 'CashOnDelivery'].map((payment) => (
               <div key={payment}>
@@ -35,7 +35,7 @@ const Form = () => {
                   <input
                     type="radio"
                     name="paymentMethod"
-                    className="radio"
+                    className="radio bg-white"
                     value={payment}
                     checked={selectedPaymentMethod === payment}
                     onChange={() => setSelectedPaymentMethod(payment)}
@@ -44,7 +44,7 @@ const Form = () => {
               </div>
             ))}
             <div className="my-2">
-              <button type="submit" className="btn btn-primary w-full">
+              <button type="submit" className="btn w-full bg-[#8EA4D2] hover:bg-[#2B5F9E] text-white">
                 Next
               </button>
             </div>

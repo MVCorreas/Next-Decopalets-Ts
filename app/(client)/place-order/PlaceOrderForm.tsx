@@ -72,7 +72,7 @@ const Form = () => {
 
       <div className="grid md:grid-cols-4 md:gap-5 my-4">
         <div className="overflow-x-auto md:col-span-3">
-          <div className="card bg-base-300">
+          <div className="card bg-sky-50">
             <div className="card-body">
               <h2 className="card-title">Shipping Address</h2>
               <p>{shippingAddress.fullName}</p>
@@ -81,26 +81,26 @@ const Form = () => {
                 {shippingAddress.postalCode}, {shippingAddress.country}{' '}
               </p>
               <div>
-                <Link className="btn" href="/shipping">
+                <Link className="btn bg-[#8EA4D2] hover:bg-[#2B5F9E] text-white" href="/shipping">
                   Edit
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="card bg-base-300 mt-4">
+          <div className="card bg-sky-50 mt-4">
             <div className="card-body">
               <h2 className="card-title">Payment Method</h2>
               <p>{paymentMethod}</p>
               <div>
-                <Link className="btn" href="/payment">
+                <Link className="btn bg-[#8EA4D2] hover:bg-[#2B5F9E] text-white" href="/payment">
                   Edit
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="card bg-base-300 mt-4">
+          <div className="card bg-sky-50 mt-4">
             <div className="card-body">
               <h2 className="card-title">Items</h2>
               <table className="table">
@@ -114,7 +114,7 @@ const Form = () => {
                 <tbody>
                   {items.map((item) => (
                     <tr key={item._id}>
-                      <td>
+                      <td >
                         <Link
                           href={`/product/${item._id}`}
                           className="flex items-center"
@@ -139,7 +139,7 @@ const Form = () => {
                 </tbody>
               </table>
               <div>
-                <Link className="btn" href="/cart">
+                <Link className="btn bg-[#8EA4D2] hover:bg-[#2B5F9E] text-white" href="/cart">
                   Edit
                 </Link>
               </div>
@@ -148,9 +148,9 @@ const Form = () => {
         </div>
 
         <div>
-          <div className="card bg-base-300">
+          <div className="card bg-[#8EA4D2]">
             <div className="card-body">
-              <h2 className="card-title">Order Summary</h2>
+              <h2 className="card-title text-white">Order Summary</h2>
               <ul className="space-y-3">
                 <li>
                   <div className=" flex justify-between">
@@ -181,7 +181,7 @@ const Form = () => {
                   <button
                     onClick={() => placeOrder()}
                     disabled={isPlacing}
-                    className="btn btn-primary w-full"
+                    className="btn w-full bg-[#8EA4D2] hover:bg-[#2B5F9E] text-white"
                   >
                     {isPlacing && (
                       <span className="loading loading-spinner"></span>

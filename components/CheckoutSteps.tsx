@@ -7,7 +7,7 @@ const CheckoutSteps = ({ current = 0 }) => {
             <li
               key={step}
               className={`step
-             ${index <= current ? 'step-primary' : ''}
+             ${index <= current ? 'step-primary text-white ' : 'text-white'}
              `}
             >
               {step}
