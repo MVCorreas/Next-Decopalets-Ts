@@ -39,7 +39,8 @@ export default async function ProductDetails({ params }: { params: { id: string 
   return (
     <>
     <div className='my-2 text-white text-xl'>
-      <Link href='/'>back to products</Link>
+   
+      <Link href='/'>Back to products</Link>
     </div>
     <div className='grid md:grid-cols-4 md:gap-3 bg-white rounded-lg shadow-md p-9'>
       <div className='md:col-span-2 '>

@@ -20,24 +20,40 @@ export default async function Home() {
   //console.log('At Home latestProducts:', latestProducts);
   //console.log('At Home featuredProducts:', featuredProducts);
 
-  const randomLatestProducts = latestProducts
-    .sort(() => Math.random() - 0.5) // Shuffle the array
-    .slice(0, 4); // Select the first four products
+  // const randomLatestProducts = latestProducts
+  //   .sort(() => Math.random() - 0.5) // Shuffle the array
+  //   .slice(0, 4); // Select the first four products
+
+  const carouselPics = [{
+    id: 1,
+    image: '/assets/carousel1.jpeg',
+  },
+  {
+    id: 2,
+    image: '/assets/carousel2.jpeg',
+  },
+  {
+    id: 3,
+    image: '/assets/carousel3.jpeg',
+  },
+  {
+    id: 4,
+    image: '/assets/carousel4.jpeg',
+  }
+  ]
 
   return (
     <>
     <div className="w-full carousel rounded-box mt-4 relative overflow-hidden">
-    <div className="carousel-inner flex gap-4 bg-sky-100 p-4" style={{ width: `${randomLatestProducts.length * 100}%` }}>
-          {randomLatestProducts.map((product, index) => (
+    <div className="carousel-inner flex gap-4 bg-sky-100 p-4" style={{ width: `${carouselPics.length * 100}%` }}>
+          {carouselPics.map((product, index) => (
             <div 
-              key={product._id}
+              key={product.id}
               id={`slide-${index}`}
               className="carousel-item relative w-full flex-1"
              
             >
-              <Link href={`/product/${product._id}`}>
-                <img src={product.image} className="w-full h-64" alt={product.name} />
-              </Link>
+            <img src={product.image} className="w-full h-64" alt={`carousel image ${index + 1}`} />
             </div>
           ))}
         </div>
