@@ -75,9 +75,9 @@ const ProfileForm = () => {
     }
   }
   return (
-    <div className="max-w-sm  mx-auto card bg-base-300 my-4">
+    <div className="max-w-sm  mx-auto card bg-[#8EA4D2] my-4">
       <div className="card-body">
-        <h1 className="card-title">Profile</h1>
+        <h1 className="card-title text-white text-2xl">Edit Profile</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="name">
@@ -153,7 +153,7 @@ const ProfileForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn btn-primary w-full"
+              className="btn btn-primary w-full bg-[#244999] hover:bg-[#2B5F9E] text-white md:text-md sm:text-sm"
             >
               {isSubmitting && (
                 <span className="loading loading-spinner"></span>

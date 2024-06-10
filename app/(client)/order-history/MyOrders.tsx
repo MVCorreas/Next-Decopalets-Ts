@@ -22,9 +22,9 @@ export default function MyOrders() {
 
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table bg-sky-50 my-4">
         <thead>
-          <tr>
+          <tr className='text-lg border-black text-[#244999]'>
             <th>ID</th>
             <th>DATE</th>
             <th>TOTAL</th>
@@ -35,7 +35,7 @@ export default function MyOrders() {
         </thead>
         <tbody>
           {orders.map((order: Order) => (
-            <tr key={order._id}>
+            <tr key={order._id} className=' border-black'>
               <td>{order._id.substring(20, 24)}</td>
               <td>{order.createdAt.substring(0, 10)}</td>
               <td>${order.totalPrice}</td>
