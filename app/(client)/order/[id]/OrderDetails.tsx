@@ -65,10 +65,10 @@ export default function OrderDetails({
 
   return (
     <div>
-      <h1 className="text-2xl py-4 text-white">Order {orderId}</h1>
+      <h1 className="text-2xl py-4 text-white">Order ID: {orderId}</h1>
       <div className="grid md:grid-cols-4 md:gap-5 my-4">
         <div className="md:col-span-3">
-          <div className="card bg-base-300">
+          <div className="card bg-sky-50">
             <div className="card-body">
               <h2 className="card-title">Shipping Address</h2>
               <p>{shippingAddress.fullName}</p>
@@ -84,7 +84,7 @@ export default function OrderDetails({
             </div>
           </div>
 
-          <div className="card bg-base-300 mt-4">
+          <div className="card bg-sky-50 mt-4">
             <div className="card-body">
               <h2 className="card-title">Payment Method</h2>
               <p>{paymentMethod}</p>
@@ -96,9 +96,9 @@ export default function OrderDetails({
             </div>
           </div>
 
-          <div className="card bg-base-300 mt-4">
+          <div className="card bg-sky-50 mt-4">
             <div className="card-body">
-              <h2 className="card-title">Items</h2>
+              <h2 className="card-title ">Items</h2>
               <table className="table">
                 <thead>
                   <tr className='border-b border-black'>

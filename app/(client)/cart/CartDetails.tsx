@@ -95,9 +95,9 @@ export default function CartDetails() {
                   <li>
                     <button
                       onClick={() => router.push("/shipping")}
-                      className="btn btn-primary w-full bg-[#244999] hover:bg-[#2B5F9E] text-white text-lg"
+                      className="btn btn-primary w-full bg-[#244999] hover:bg-[#2B5F9E] text-white md:text-md sm:text-sm"
                     >
-                      Proceed to Checkout
+                     Checkout
                     </button>
                   </li>
                 </ul>
