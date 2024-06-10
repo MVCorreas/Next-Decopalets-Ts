@@ -65,7 +65,7 @@ export default function OrderDetails({
 
   return (
     <div>
-      <h1 className="text-2xl py-4">Order {orderId}</h1>
+      <h1 className="text-2xl py-4 text-white">Order {orderId}</h1>
       <div className="grid md:grid-cols-4 md:gap-5 my-4">
         <div className="md:col-span-3">
           <div className="card bg-base-300">
@@ -101,7 +101,7 @@ export default function OrderDetails({
               <h2 className="card-title">Items</h2>
               <table className="table">
                 <thead>
-                  <tr>
+                  <tr className='border-b border-black'>
                     <th>Item</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -109,8 +109,8 @@ export default function OrderDetails({
                 </thead>
                 <tbody>
                   {items.map((item: OrderItem) => (
-                    <tr key={item.id}>
-                      <td>
+                    <tr key={item.id} className='border-b border-black'>
+                      <td >
                         <Link
                           href={`/product/${item.id}`}
                           className="flex items-center"
@@ -137,9 +137,9 @@ export default function OrderDetails({
         </div>
 
         <div>
-          <div className="card bg-base-300">
+          <div className="card bg-[#8EA4D2]">
             <div className="card-body">
-              <h2 className="card-title">Order Summary</h2>
+              <h2 className="card-title text-white">Order Summary</h2>
               <ul>
                 <li>
                   <div className="mb-2 flex justify-between">

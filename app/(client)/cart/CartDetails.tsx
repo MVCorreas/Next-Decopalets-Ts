@@ -21,7 +21,7 @@ export default function CartDetails() {
       <h1 className="py-4 my-2 text-white text-3xl">Shopping Cart</h1>
 
       {items.length === 0 ? (
-        <div>
+        <div className="flex justify-center items-center text-white text-2xl ">
           Cart is empty. <Link href="/">Go shopping</Link>
         </div>
       ) : (

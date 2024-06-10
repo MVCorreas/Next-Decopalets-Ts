@@ -61,13 +61,13 @@ export default async function ProductDetails({ params }: { params: { id: string 
       </div>
       <div className='grid md:grid-cols-4 md:gap-3 bg-sky-50 rounded-lg shadow-md p-9'>
         <div className='md:col-span-2'>
-          <div style={{ width: '600px', height: '500px', position: 'relative', borderRadius: '10px' }}>
+        <div className='relative w-full h-0 pb-[83.33%] rounded-lg overflow-hidden border-2'>
             <Image
               src={product.image}
               alt={product.name}
-              width={500}
-              height={500}
-              className='object-cover w-full h-full rounded-t-lg border-2'
+              layout='fill'
+              objectFit='cover'
+              className='rounded-lg'
               priority
             />
           </div>

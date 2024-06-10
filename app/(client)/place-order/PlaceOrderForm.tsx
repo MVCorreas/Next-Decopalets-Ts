@@ -105,7 +105,7 @@ const Form = () => {
               <h2 className="card-title">Items</h2>
               <table className="table">
                 <thead>
-                  <tr>
+                  <tr className='border-b border-black'>
                     <th>Item</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -113,7 +113,7 @@ const Form = () => {
                 </thead>
                 <tbody>
                   {items.map((item) => (
-                    <tr key={item._id}>
+                    <tr key={item._id} className='border-b border-black'>
                       <td >
                         <Link
                           href={`/product/${item._id}`}
