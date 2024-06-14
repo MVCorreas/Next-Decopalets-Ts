@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
@@ -10,11 +11,13 @@ type Inputs = {
   email: string
   password: string
   confirmPassword: string
+  image: FileList // Add the image field to the type
 }
 
 const ProfileForm = () => {
   const { data: session, update } = useSession()
   const router = useRouter()
+  const [preview, setPreview] = useState<string | ArrayBuffer | null>(null)
 
   const {
     register,
@@ -37,19 +40,29 @@ const ProfileForm = () => {
     }
   }, [router, session, setValue])
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setPreview(reader.result)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
   const formSubmit: SubmitHandler<Inputs> = async (form) => {
-    const { name, email, password } = form
+    const { name, email, password, image } = form
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('email', email)
+    if (password) formData.append('password', password)
+    if (image && image[0]) formData.append('image', image[0])
+
     try {
       const res = await fetch('/api/auth/profile', {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
+        body: formData,
       })
       if (res.status === 200) {
         toast.success('Profile updated successfully')
@@ -74,10 +87,19 @@ const ProfileForm = () => {
       toast.error(error)
     }
   }
+
   return (
-    <div className="max-w-sm  mx-auto card bg-[#8EA4D2] my-4">
+    <div className="card md:card-side bg-base-100 shadow-xl mt-6">
+      <figure className='w-1/2 py-10 px-10'>
+        {preview ? (
+          <img src={preview as string} alt="Profile" className='w-full'/>
+        ) : (
+          <img src="/profileAvatar.jpeg" alt="Album" className='w-full'/>
+        )}
+      </figure>
+
       <div className="card-body">
-        <h1 className="card-title text-white text-2xl">Edit Profile</h1>
+        <h1 className="card-title text-[#244999] text-2xl justify-center">Edit Profile</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="name">
@@ -89,7 +111,7 @@ const ProfileForm = () => {
               {...register('name', {
                 required: 'Name is required',
               })}
-              className="input input-bordered w-full max-w-sm"
+              className="input input-bordered w-full max-w-2xl"
             />
             {errors.name?.message && (
               <div className="text-error">{errors.name.message}</div>
@@ -109,7 +131,7 @@ const ProfileForm = () => {
                   message: 'Email is invalid',
                 },
               })}
-              className="input input-bordered w-full max-w-sm"
+              className="input input-bordered w-full max-w-2xl"
             />
             {errors.email?.message && (
               <div className="text-error">{errors.email.message}</div>
@@ -123,7 +145,7 @@ const ProfileForm = () => {
               type="password"
               id="password"
               {...register('password', {})}
-              className="input input-bordered w-full max-w-sm"
+              className="input input-bordered w-full max-w-2xl"
             />
             {errors.password?.message && (
               <div className="text-error">{errors.password.message}</div>
@@ -142,13 +164,24 @@ const ProfileForm = () => {
                   return password === value || 'Passwords should match!'
                 },
               })}
-              className="input input-bordered w-full max-w-sm"
+              className="input input-bordered w-full max-w-2xl"
             />
             {errors.confirmPassword?.message && (
               <div className="text-error">{errors.confirmPassword.message}</div>
             )}
           </div>
-
+          <div className="my-2">
+            <label className="label" htmlFor="image">
+              Profile Image
+            </label>
+            <input
+              type="file"
+              id="image"
+              {...register('image')}
+              className="input input-bordered w-full max-w-2xl"
+              onChange={handleImageChange}
+            />
+          </div>
           <div className="my-2">
             <button
               type="submit"
