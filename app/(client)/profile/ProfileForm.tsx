@@ -11,7 +11,7 @@ type Inputs = {
   email: string
   password: string
   confirmPassword: string
-  image: FileList // Add the image field to the type
+  image: FileList 
 }
 
 const ProfileForm = () => {
@@ -89,12 +89,12 @@ const ProfileForm = () => {
   }
 
   return (
-    <div className="card md:card-side bg-base-100 shadow-xl mt-6">
-      <figure className='w-1/2 py-10 px-10'>
+    <div className="card sm:card-side bg-base-100 shadow-xl mt-4 w-3/4 mx-auto">
+      <figure className='w-1/2 p-8'>
         {preview ? (
-          <img src={preview as string} alt="Profile" className='w-full'/>
+          <img src={preview as string} alt="Profile" className='w-80 h-100 object-cover rounded-md'/>
         ) : (
-          <img src="/profileAvatar.jpeg" alt="Album" className='w-full'/>
+          <img src="/assets/profileAvatar.jpeg" alt="Profile" className='w-80 h-100 object-cover rounded-md'/>
         )}
       </figure>
 
